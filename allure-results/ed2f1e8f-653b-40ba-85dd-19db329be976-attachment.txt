@@ -1,0 +1,5 @@
+Global before is run
+title of the window is async title() {
+    return await this._mainFrame.title();
+  }
+Global after is run

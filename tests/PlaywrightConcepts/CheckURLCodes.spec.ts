@@ -20,6 +20,8 @@ async function getAllLinksFromPage(page: Page) {
 
 test('Check web URLs', async ({ page }) => {
 
+    // To check the status codes
+
     await page.goto("https://www.deadlinkchecker.com/");
 
     const validLinkURLs = await getAllLinksFromPage(page);

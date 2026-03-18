@@ -3,11 +3,11 @@ import { test, expect } from '@playwright/test'
 test.describe('Smoke Tests', () => {
      // Add tests belonging to smoke tests
 
-     test('Smoke test 1',{tag:['@LoginTest']} , async ({ page }) => {
+     test('Smoke test 1', { tag: ['@LoginTest'] }, async ({ page }) => {
 
      });
 
-     test('Smoke test 2', {tag:['@LoginTest']} , async ({ page }) => {
+     test('Smoke test 2', { tag: ['@LoginTest'] }, async ({ page }) => {
 
      });
 
@@ -15,11 +15,11 @@ test.describe('Smoke Tests', () => {
 
 test.describe('Sanity Tests', () => {
      // Add tests belonging to smoke tests
-     test('Sanity test 1',async ({ page }) => {
+     test('Sanity test 1', async ({ page }) => {
 
      });
 
-     test('Sanity test 2', {tag:['@LoginTest','@QuickTest']} ,async ({ page }) => {
+     test('Sanity test 2', { tag: ['@LoginTest', '@QuickTest'] }, async ({ page }) => {
 
      });
 
@@ -37,46 +37,43 @@ test.only('Running test1', async ({ page }) => {
 
 // Ensures tests are failed. if passed playwright will report an error.
 test.fail('failing test', async ({ page }) => {
-  test.fail();
-  // ... test code ...
+     test.fail();
+     // ... test code ...
 });
 
 // Used to mark tests that needs attention. it skips the executions.
 test.fixme('inprogress tests', async ({ page }) => {
-  test.fail();
-  // ... test code ...
+     test.fail();
+     // ... test code ...
 });
 
 // Used to mark tests that needs attention. it triples the default timeouts.
 test('Slow Tests', async ({ page }) => {
-  // ... test code ...
+     // ... test code ...
 
-  let user ="user1";
-  test.slow(user==="user1", `Exeuction is slow for ${user}`);
+     let user = "user1";
+     test.slow(user === "user1", `Exeuction is slow for ${user}`);
 });
 
 test.describe('slow group', () => {
-  test.slow(); // Applies to all tests within this describe block
-  test('test 1', async ({ page }) => { /* ... */ });
-  test('test 2', async ({ page }) => { /* ... */ });
+     test.slow(); // Applies to all tests within this describe block
+     test('test 1', async ({ page }) => { /* ... */ });
+     test('test 2', async ({ page }) => { /* ... */ });
 });
-
-
-
-
 
 
 // To run the tests using tags use-  npx playwright test --grep '@LoginTest'
 // To run tests repeated number of times use- npx playwright test --grep '@LoginTest' --repeat-each=2
 // To run any specific spec file use - npx playwright test .\tests\WebAppTests\RunningSelectedTests.spec.ts
-// npx playwright test --last-failed
+// To run last failed tests - npx playwright test --last-failed
+// When connected to Github, this is used to run only modified tests - npx playwright test --only-changed  
 
 // Parameterize tests
 
 const inputArray = ["user1", "user2", "user3"];
 
-for(let user of inputArray){
-     test(`parametrized test for ${user}`, async({page})=> {
+for (let user of inputArray) {
+     test(`parametrized test for ${user}`, async ({ page }) => {
           console.log(`completed test for ${user}`)
      })
 }

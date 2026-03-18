@@ -24,11 +24,6 @@ export class HomePage{
         await this.basicAuthLink.click();
     }
 
-    async PrintPageTitle(){
-        let title = await this.page.title;
-        console.log(`title of the window is ${title}`);        
-    }
-
     async GotoCheckBoxesPage(){
         await this.checkBoxesLink.click();
     }
