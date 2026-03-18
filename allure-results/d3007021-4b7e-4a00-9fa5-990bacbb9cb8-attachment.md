@@ -1,0 +1,339 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - banner [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - heading "Get free access to our advanced XPath & CSS course. Ends in -" [level=5] [ref=e7]:
+          - link "Get free access to our advanced XPath & CSS course. Ends in -" [ref=e8] [cursor=pointer]:
+            - /url: https://selectorshub.com/get-free-access-of-advanced-xpath-and-css-selector-paid-course/
+        - generic [ref=e10]:
+          - generic [ref=e11]: 09 Hrs
+          - generic [ref=e12]: 55 Min
+          - generic [ref=e13]: 28 Sec
+        - link "Claim It Here" [ref=e15] [cursor=pointer]:
+          - /url: https://selectorshub.com/get-free-access-of-advanced-xpath-and-css-selector-paid-course/
+          - generic [ref=e17]: Claim It Here
+      - generic [ref=e20]:
+        - link [ref=e22] [cursor=pointer]:
+          - /url: https://selectorshub.com
+        - navigation "Menu" [ref=e24]:
+          - generic "Menu Toggle" [ref=e25]:
+            - list [ref=e26]:
+              - listitem [ref=e27]:
+                - generic [ref=e28]:
+                  - generic [ref=e30]: Products
+                  - button "Open Products" [ref=e31]:
+                    - generic [ref=e32]:
+                      - img [ref=e33]
+                      - generic [ref=e35]: Open Products
+              - listitem [ref=e36]:
+                - generic [ref=e37]:
+                  - generic [ref=e39]: Pro Plans
+                  - button "Open Pro Plans" [ref=e40]:
+                    - generic [ref=e41]:
+                      - img [ref=e42]
+                      - generic [ref=e44]: Open Pro Plans
+              - listitem [ref=e45]:
+                - link "Courses" [ref=e47] [cursor=pointer]:
+                  - /url: /courses-recordings/
+                  - generic [ref=e48]: Courses
+              - listitem [ref=e49]:
+                - link "Practice Page" [ref=e51] [cursor=pointer]:
+                  - /url: /xpath-practice-page/
+                  - generic [ref=e52]: Practice Page
+              - listitem [ref=e53]:
+                - generic [ref=e54]:
+                  - generic [ref=e56]: Resources
+                  - button "Open Resources" [ref=e57]:
+                    - generic [ref=e58]:
+                      - img [ref=e59]
+                      - generic [ref=e61]: Open Resources
+              - listitem [ref=e62]:
+                - link "Help?" [ref=e64] [cursor=pointer]:
+                  - /url: /contact-us/
+                  - generic [ref=e65]: Help?
+        - link [ref=e68] [cursor=pointer]:
+          - /url: "#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIyNjU3IiwidG9nZ2xlIjpmYWxzZX0%3D"
+          - img [ref=e69]
+  - main [ref=e71]:
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - heading "Automate Check My Links through Playwright" [level=1] [ref=e79]:
+          - text: Automate
+          - generic [ref=e80]:
+            - generic [ref=e81]: Check My Links
+            - img [ref=e82]
+          - text: through Playwright
+        - generic [ref=e84]:
+          - paragraph [ref=e85]:
+            - text: Check My Links –
+            - link "Download Link" [ref=e86] [cursor=pointer]:
+              - /url: https://chromewebstore.google.com/detail/check-my-links/aajoalonednamcpodaeocebfgldhcpbe
+              - strong [ref=e87]: Download Link
+          - paragraph [ref=e88]:
+            - text: CRX plugin link to get the extension folder –
+            - link "Download Link" [ref=e89] [cursor=pointer]:
+              - /url: https://chromewebstore.google.com/detail/chrome-extension-source-v/jifpbeccnghkjeaalbbjmodiffmgedin
+              - strong [ref=e90]: Download Link
+          - paragraph [ref=e91]: Please use the below code to automate Check My Links using Playwright. Kindly follow the attached tutorial below for the detailed explanation and working demo.
+        - generic [ref=e92]:
+          - heading "Code to automate one Page" [level=2] [ref=e94]
+          - generic [ref=e97]:
+            - code [ref=e99]:
+              - text: "import { test as base, chromium, BrowserContext } from '@playwright/test'; import path from 'path'; export const test = base.extend<{ context: BrowserContext; extensionId: string; }>({ context: async ("
+              - generic [ref=e100]: "{ }, use"
+              - text: ") => { const pathToExtension = path.join(__dirname, 'checkmylinks_demo'); const context = await chromium.launchPersistentContext('', { headless: false, args: ["
+              - generic [ref=e101]:
+                - text: "`--disable-extensions-except="
+                - generic [ref=e102]: "${pathToExtension}"
+                - text: "`"
+              - text: ","
+              - generic [ref=e103]:
+                - text: "`--load-extension="
+                - generic [ref=e104]: "${pathToExtension}"
+                - text: "`"
+              - text: ", ], }); await use(context); await context.close(); }, extensionId: async ("
+              - generic [ref=e105]: "{ context }, use"
+              - text: ") => { // for manifest v3: let [background] = context.serviceWorkers(); if (!background) background = await context.waitForEvent('serviceworker'); const extensionId = background.url().split('/')[2]; await use(extensionId); }, }); export const expect = test.expect; test('example test', async ("
+              - generic [ref=e106]: "{ page }"
+              - text: ") => { await page.goto('https://selectorshub.com/xpath-practice-page/'); await page.waitForTimeout(5000); const iframe = await page.frameLocator(\"//iframe[@id='check-my-link-iframe']\") await iframe.locator(\"xpath=//strong[@class='queued'][text()='0']\").waitFor(); const locator = iframe.locator(\"xpath=//strong[@class='queued'][text()='0']\"); const count = await locator.count(); console.log(\"count value-\"+count); if (count > 0) { console.log(\"count value-\"+count); // Start waiting for download before clicking. Note no await. const downloadPromise = page.waitForEvent('download'); await iframe.locator(\"xpath=//span[text()='Export All']\").click(); const download = await downloadPromise; // Wait for the download process to complete and save the downloaded file somewhere. await download.saveAs('/Users/sanjaykumar/Downloads/' + download.suggestedFilename()); } await page.waitForTimeout(20000); });"
+            - button "Copy" [ref=e109]
+        - generic [ref=e111]:
+          - generic:
+            - generic:
+              - generic:
+                - iframe
+        - generic [ref=e113]:
+          - generic:
+            - generic:
+              - generic:
+                - iframe
+        - generic [ref=e114]:
+          - heading "Code to automate Multiple Pages & get report for all in one go (recommended)" [level=2] [ref=e116]
+          - generic [ref=e119]:
+            - code [ref=e121]:
+              - text: "import { test as base, chromium, BrowserContext } from '@playwright/test'; import path from 'path'; export const test = base.extend<{ context: BrowserContext; extensionId: string; }>({ context: async ("
+              - generic [ref=e122]: "{ }, use"
+              - text: ") => { const pathToExtension = path.join(__dirname, 'checkmylinks_demo'); const context = await chromium.launchPersistentContext('', { headless: false, args: ["
+              - generic [ref=e123]:
+                - text: "`--disable-extensions-except="
+                - generic [ref=e124]: "${pathToExtension}"
+                - text: "`"
+              - text: ","
+              - generic [ref=e125]:
+                - text: "`--load-extension="
+                - generic [ref=e126]: "${pathToExtension}"
+                - text: "`"
+              - text: ", ], }); await use(context); await context.close(); }, extensionId: async ("
+              - generic [ref=e127]: "{ context }, use"
+              - text: ") => { // for manifest v3: let [background] = context.serviceWorkers(); if (!background) background = await context.waitForEvent('serviceworker'); const extensionId = background.url().split('/')[2]; await use(extensionId); }, }); export const expect = test.expect; const fs = require('fs'); test('example test', async ("
+              - generic [ref=e128]: "{ page }"
+              - text: ") => { await page.goto('https://google.com/'); await downloadReport(page, \"google1.csv\"); }); test('example test1', async ("
+              - generic [ref=e129]: "{ page }"
+              - text: ") => { await page.goto('https://tricentis.com/'); await downloadReport(page, \"tricentis1.csv\"); }); test('example test2', async ("
+              - generic [ref=e130]: "{ page }"
+              - text: ") => { await page.goto('https://selectorshub.com/'); await downloadReport(page, \"selectorshub1.csv\"); }); test('example test3', async ("
+              - generic [ref=e131]: "{ page }"
+              - text: ") => { await page.goto('https://selectorshub.com/xpath-practice-page/'); await downloadReport(page, \"practicepage.csv\"); }); async function downloadReport("
+              - generic [ref=e132]: page, fileName
+              - text: "){ await page.waitForTimeout(5000); const iframe = await page.frameLocator(\"//iframe[@id='check-my-link-iframe']\") await iframe.locator(\"xpath=//strong[@class='queued'][text()='0']\").waitFor(); const locator = iframe.locator(\"xpath=//strong[@class='queued'][text()='0']\"); const count = await locator.count(); console.log(\"count value-\"+count); if (count > 0) { console.log(\"count value-\"+count); // Start waiting for download before clicking. Note no await. const downloadPromise = page.waitForEvent('download'); await iframe.locator(\"xpath=//span[text()='Export All']\").click(); const download = await downloadPromise; // Wait for download to complete const tempPath = await download.path(); if (tempPath) { const newFileName = fileName; // Change to your desired name const targetDir = '/Users/sanjaykumar/Downloads/'; // Ensure this directory exists const newPath = path.join(targetDir, newFileName); fs.renameSync(tempPath, newPath); console.log("
+              - generic [ref=e133]:
+                - text: "`File renamed to:"
+                - generic [ref=e134]: "${newPath}"
+                - text: "`"
+              - text: "); } else { console.log('Download path not found!'); } } }"
+            - button "Copy" [ref=e137]
+      - generic [ref=e143]:
+        - heading "Recent Post" [level=6] [ref=e145]
+        - list [ref=e149]:
+          - listitem [ref=e150]:
+            - heading "Screenshot with URL vs other tools" [level=3] [ref=e152]:
+              - link "Screenshot with URL vs other tools" [ref=e153] [cursor=pointer]:
+                - /url: https://selectorshub.com/screenshot-with-url-vs-other-tools/
+          - listitem [ref=e154]:
+            - heading "SelectorsHub Tools Comparison Guide" [level=3] [ref=e156]:
+              - link "SelectorsHub Tools Comparison Guide" [ref=e157] [cursor=pointer]:
+                - /url: https://selectorshub.com/selectorshub-tools-comparison-guide/
+          - listitem [ref=e158]:
+            - 'heading "Stop Taking Screenshots Manually, there’s a Better Way: Screenshot with URL" [level=3] [ref=e160]':
+              - 'link "Stop Taking Screenshots Manually, there’s a Better Way: Screenshot with URL" [ref=e161] [cursor=pointer]':
+                - /url: https://selectorshub.com/stop-taking-screenshots-manually-theres-a-better-way-screenshot-with-url/
+          - listitem [ref=e162]:
+            - 'heading "Exploratory Tester: Stop Testing Manually. Get the Report Before You Even Start." [level=3] [ref=e164]':
+              - 'link "Exploratory Tester: Stop Testing Manually. Get the Report Before You Even Start." [ref=e165] [cursor=pointer]':
+                - /url: https://selectorshub.com/exploratory-tester-stop-testing-manually-get-the-report-before-you-even-start/
+          - listitem [ref=e166]:
+            - 'heading "SelectorsHub: Now a Patented Technology 🏆" [level=3] [ref=e168]':
+              - 'link "SelectorsHub: Now a Patented Technology 🏆" [ref=e169] [cursor=pointer]':
+                - /url: https://selectorshub.com/selectorshub-now-a-patented-technology/
+                - text: "SelectorsHub: Now a Patented Technology"
+                - img "🏆" [ref=e170]
+          - listitem [ref=e171]:
+            - heading "🎭 Playwright Locators Made Easy — Auto-Generate & Verify Playwright Locators with SelectorsHub" [level=3] [ref=e173]:
+              - link "🎭 Playwright Locators Made Easy — Auto-Generate & Verify Playwright Locators with SelectorsHub" [ref=e174] [cursor=pointer]:
+                - /url: https://selectorshub.com/auto-generate-verify-playwright-locators-with-selectorshub/
+                - img "🎭" [ref=e175]
+                - text: Playwright Locators Made Easy — Auto-Generate & Verify Playwright Locators with SelectorsHub
+          - listitem [ref=e176]:
+            - heading "How to customize data in Auto Data Filler" [level=3] [ref=e178]:
+              - link "How to customize data in Auto Data Filler" [ref=e179] [cursor=pointer]:
+                - /url: https://selectorshub.com/how-to-customize-data-in-auto-data-filler/
+          - listitem [ref=e180]:
+            - heading "Is Page Load Timer Safe To use?" [level=3] [ref=e182]:
+              - link "Is Page Load Timer Safe To use?" [ref=e183] [cursor=pointer]:
+                - /url: https://selectorshub.com/is-page-load-timer-safe-to-use/
+          - listitem [ref=e184]:
+            - heading "Is Check My Links Safe To use?" [level=3] [ref=e186]:
+              - link "Is Check My Links Safe To use?" [ref=e187] [cursor=pointer]:
+                - /url: https://selectorshub.com/is-check-my-links-safe-to-use/
+          - listitem [ref=e188]:
+            - heading "Top 10 Must Have Free Browser Plugins for Every QA" [level=3] [ref=e190]:
+              - link "Top 10 Must Have Free Browser Plugins for Every QA" [ref=e191] [cursor=pointer]:
+                - /url: https://selectorshub.com/top-10-must-have-free-browser-plugins-for-every-qa/
+  - contentinfo [ref=e197]:
+    - contentinfo [ref=e198]:
+      - generic [ref=e199]:
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - link "SelectorHub Logo" [ref=e203] [cursor=pointer]:
+              - /url: https://selectorshub.com
+              - img "SelectorHub Logo" [ref=e204]
+            - generic [ref=e205]:
+              - paragraph [ref=e206]: We’re Here to Enhance Your Web Testing—Start Now
+              - paragraph [ref=e207]: support@selectorshub.com
+          - generic [ref=e208]:
+            - heading "Free Tools" [level=4] [ref=e210]
+            - navigation "Menu" [ref=e212]:
+              - list [ref=e213]:
+                - listitem [ref=e214]:
+                  - link "SelectorsHub – Best Tool to auto generate Playwright Locators and Xpath" [ref=e215] [cursor=pointer]:
+                    - /url: https://selectorshub.com/selectorshub/
+                - listitem [ref=e216]:
+                  - link "TestCase Studio" [ref=e217] [cursor=pointer]:
+                    - /url: https://selectorshub.com/testcase-studio/
+                - listitem [ref=e218]:
+                  - link "Check My Links" [ref=e219] [cursor=pointer]:
+                    - /url: https://selectorshub.com/checkmylinks/
+                - listitem [ref=e220]:
+                  - link "Exploratory Tester" [ref=e221] [cursor=pointer]:
+                    - /url: https://selectorshub.com/exploratory-tester/
+                - listitem [ref=e222]:
+                  - link "Screenshot with URL" [ref=e223] [cursor=pointer]:
+                    - /url: https://selectorshub.com/screenshot-with-url/
+                - listitem [ref=e224]:
+                  - link "Page Load Timer" [ref=e225] [cursor=pointer]:
+                    - /url: https://selectorshub.com/page-load-timer/
+                - listitem [ref=e226]:
+                  - link "Testing Daily" [ref=e227] [cursor=pointer]:
+                    - /url: https://selectorshub.com/testing-daily/
+                - listitem [ref=e228]:
+                  - link "Auto Data Filler" [ref=e229] [cursor=pointer]:
+                    - /url: https://selectorshub.com/auto-data-filler/
+                - listitem [ref=e230]:
+                  - link "AutoTestData" [ref=e231] [cursor=pointer]:
+                    - /url: https://selectorshub.com/autotestdata/
+                - listitem [ref=e232]:
+                  - link "Automation Tool Analyzer" [ref=e233] [cursor=pointer]:
+                    - /url: https://selectorshub.com/automation-tool-analyzer/
+                - listitem [ref=e234]:
+                  - link "AI Post Creator" [ref=e235] [cursor=pointer]:
+                    - /url: https://selectorshub.com/ai-post-creator/
+          - generic [ref=e236]:
+            - heading "Paid Tools" [level=4] [ref=e238]
+            - navigation "Menu" [ref=e240]:
+              - list [ref=e241]:
+                - listitem [ref=e242]:
+                  - link "SelectorsHub Pro" [ref=e243] [cursor=pointer]:
+                    - /url: https://selectorshub.com/selectorshub-pro/
+                - listitem [ref=e244]:
+                  - link "TestCase Studio Pro" [ref=e245] [cursor=pointer]:
+                    - /url: https://selectorshub.com/testcase-studio-pro/
+                - listitem [ref=e246]:
+                  - link "Promote with us" [ref=e247] [cursor=pointer]:
+                    - /url: https://selectorshub.com/selectorshub-ads/
+          - generic [ref=e248]:
+            - heading "Resources" [level=4] [ref=e250]
+            - navigation "Menu" [ref=e252]:
+              - list [ref=e253]:
+                - listitem [ref=e254]:
+                  - link "Courses" [ref=e255] [cursor=pointer]:
+                    - /url: https://selectorshub.com/courses-recordings/
+                - listitem [ref=e256]:
+                  - link "Trainings" [ref=e257] [cursor=pointer]:
+                    - /url: https://selectorshub.com/bootcamp/
+                - listitem [ref=e258]:
+                  - link "Video Tutorials" [ref=e259] [cursor=pointer]:
+                    - /url: https://www.youtube.com/c/SelectorsHub?sub_confirmation=1
+                - listitem [ref=e260]:
+                  - link "Meetup" [ref=e261] [cursor=pointer]:
+                    - /url: https://selectorshub.com/meetup/
+                - listitem [ref=e262]:
+                  - link "SelectorsHub Offers" [ref=e263] [cursor=pointer]:
+                    - /url: https://selectorshub.com/offers/
+          - generic [ref=e264]:
+            - heading "Useful Links" [level=4] [ref=e266]
+            - navigation "Menu" [ref=e268]:
+              - list [ref=e269]:
+                - listitem [ref=e270]:
+                  - link "About Us" [ref=e271] [cursor=pointer]:
+                    - /url: https://selectorshub.com/team/
+                - listitem [ref=e272]:
+                  - link "Contact Us" [ref=e273] [cursor=pointer]:
+                    - /url: https://selectorshub.com/contact-us/
+                - listitem [ref=e274]:
+                  - link "Sponsors" [ref=e275] [cursor=pointer]:
+                    - /url: https://selectorshub.com/sponsors/
+                - listitem [ref=e276]:
+                  - link "Practice Page" [ref=e277] [cursor=pointer]:
+                    - /url: https://selectorshub.com/xpath-practice-page/
+                - listitem [ref=e278]:
+                  - link "Cancellation & Refund Policy" [ref=e279] [cursor=pointer]:
+                    - /url: https://selectorshub.com/cancellation-refund-policy/
+                - listitem [ref=e280]:
+                  - link "Certification" [ref=e281] [cursor=pointer]:
+                    - /url: https://selectorshub.com/certification/
+                - listitem [ref=e282]:
+                  - link "Privacy Policy" [ref=e283] [cursor=pointer]:
+                    - /url: https://selectorshub.com/privacy-policy/
+                - listitem [ref=e284]:
+                  - link "Terms of Service" [ref=e285] [cursor=pointer]:
+                    - /url: https://selectorshub.com/terms-of-service/
+        - generic [ref=e286]:
+          - generic [ref=e288]: Copyright © 2026 SelectorsHub ® . All rights reserved
+          - list [ref=e291]:
+            - listitem [ref=e292]:
+              - link "Youtube" [ref=e293] [cursor=pointer]:
+                - /url: https://www.youtube.com/c/SelectorsHub?sub_confirmation=1
+                - generic [ref=e294]: Youtube
+                - img [ref=e295]
+            - listitem [ref=e297]:
+              - link "Telegram" [ref=e298] [cursor=pointer]:
+                - /url: https://t.me/selectorshub
+                - generic [ref=e299]: Telegram
+                - img [ref=e300]
+            - listitem [ref=e302]:
+              - link "Instagram" [ref=e303] [cursor=pointer]:
+                - /url: https://www.instagram.com/SelectorsHub/
+                - generic [ref=e304]: Instagram
+                - img [ref=e305]
+            - listitem [ref=e307]:
+              - link "Linkedin" [ref=e308] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/selectorshub/about
+                - generic [ref=e309]: Linkedin
+                - img [ref=e310]
+            - listitem [ref=e312]:
+              - link "Facebook" [ref=e313] [cursor=pointer]:
+                - /url: https://www.facebook.com/selectorshub/
+                - generic [ref=e314]: Facebook
+                - img [ref=e315]
+            - listitem [ref=e317]:
+              - link "Twitter" [ref=e318] [cursor=pointer]:
+                - /url: https://x.com/SelectorsHub
+                - generic [ref=e319]: Twitter
+                - img [ref=e320]
+  - generic [ref=e322]: desktop
+```

@@ -1,0 +1,20 @@
+Set(17) {
+  'accountsettings.asp',
+  'login.asp',
+  'createaccount.asp',
+  'website-dead-link-checker.asp',
+  'multiple-websites-broken-link-check.asp',
+  'automatic-broken-link-check.asp',
+  'faq.asp',
+  'https://www.deadlinkchecker.com/automatic-broken-link-check.asp',
+  'https://www.deadlinkchecker.com/website-dead-link-checker.asp',
+  'https://www.deadlinkchecker.com/multisite.asp',
+  'https://www.deadlinkchecker.com/reports.asp',
+  'https://www.deadlinkchecker.com/website-link-checker-options.asp',
+  'error-codes.asp',
+  'sitemap.asp',
+  'about.asp#contact',
+  'about.asp',
+  'terms.asp'
+}
+17

@@ -1,0 +1,9 @@
+[
+  { Skill1: 'Selenium', Skill2: 'Playwright' },
+  { Skill1: 'TestNG', Skill2: 'Typescript' },
+  { Skill1: 'Github', Skill2: 'Github' }
+]
+Please find the main skills of this user
+Skill1 of the user is Selenium
+Skill2 of the user is TestNG
+Skill3 of the user is Github

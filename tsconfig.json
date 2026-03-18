@@ -1,0 +1,28 @@
+/*
+The presence of a tsconfig.json file in a directory indicates that the directory is the root of a TypeScript project.
+The tsconfig.json file specifies the root files and the compiler options required to compile the project.
+*/
+
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "types": ["@playwright/test"],
+    "baseUrl": ".",
+    "paths": {
+      "@helpers/*": ["tests/helpers/*"]
+      // Add other path aliases as needed
+    },
+    "isolatedModules": true, // Ensures each file can be safely transpiled alone
+    "noEmit": true // Do not emit output files, as Playwright handles transpilation
+  },
+  "include": [
+    "tests/**/*.ts" // Include all TypeScript files in the tests directory
+  ]
+}

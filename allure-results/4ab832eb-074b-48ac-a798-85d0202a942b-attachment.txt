@@ -1,0 +1,5 @@
+[
+  { Skill1: 'Selenium', Skill2: 'Playwright' },
+  { Skill1: 'TestNG', Skill2: 'Typescript' }
+]
+2
