@@ -11,7 +11,7 @@ type TestData = {
         Skill2:string
     }
 }
-const typedTestData = testDataJson as TestData
+//const typedTestData = testDataJson as TestData
 
 /**
  * Read environment variables from file.
@@ -25,6 +25,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  globalSetup:'tests/PlaywrightConcepts/auth-setup.ts',
   testDir: './tests',
 
   timeout: 60000, // Sets default test timeout to 60 seconds
@@ -62,7 +63,8 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     actionTimeout: 10000, // Sets default action timeout to 10 seconds
-    navigationTimeout: 30000, // Sets default navigation timeout to 30 seconds
+    navigationTimeout: 30000, // Sets default navigation timeout to 30 seconds,
+    storageState:'tests/PlaywrightConcepts/loginAuthState.json',
    
   },
 

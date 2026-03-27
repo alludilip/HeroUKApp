@@ -1,9 +1,0 @@
-[
-  { Skill1: 'Selenium', Skill2: 'Playwright' },
-  { Skill1: 'TestNG', Skill2: 'Typescript' },
-  { Skill1: 'Github', Skill2: 'Github' }
-]
-Please find the main skills of this user
-Primary Skill1 of the user is Selenium
-Primary Skill2 of the user is TestNG
-Primary Skill3 of the user is Github

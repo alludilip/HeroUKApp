@@ -11,8 +11,7 @@ test('Test2', async({page})=>{
 test('Test3', async({page})=>{
     expect(true).toBe(false);
 });
+
 test('Test4', async({page})=>{
     expect(true).toBe(false);
 });
-
-// To run last failed tests ------>  npx playwright test --last-failed

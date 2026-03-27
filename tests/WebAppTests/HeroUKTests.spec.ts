@@ -2,50 +2,6 @@ import { test, expect } from '@playwright/test';
 
 
 
-// test.beforeAll(async()=>{
-//     // One time actions
-// });
-
-// test.afterAll(async()=>{
-//     // One time actions after all tests are run
-// });
-
-test.beforeEach(async({page})=>{
-    // Navigate to the home page
-    await page.goto('https://the-internet.herokuapp.com/');
-});
-
-// test.afterEach(async()=>{
-//     // one time action after all tests are run
-// });
-
-
-
-test('Checkboxes', async ({ page }) => {
-    
-    // create locator for Checkboxes hyperlink
-    const checkboxesLink = page.locator("//a[@href='/checkboxes']");
-    //const checkbox1 = page.locator('#checkboxes input[type="checkbox"]').nth(0);
-    const checkbox1 = page.locator("xpath=//input[@type='checkbox']").nth(0);
-    const checkbox2 = page.locator("xpath=//input[@type='checkbox']").nth(1);
-
-    // // Navigate to the page and wait for it to load
-    // await page.goto('https://the-internet.herokuapp.com/');
-    // await page.waitForURL('https://the-internet.herokuapp.com/');
-
-    // Click on the "Checkboxes" link and wait for the page to load
-    await checkboxesLink.click();
-    // Check the first checkbox and verify that it is checked
-    await checkbox1.check();
-    await expect(checkbox1).toBeChecked();
-    // Uncheck the second checkbox and verify that it is unchecked
-    await checkbox2.uncheck();
-    await expect(checkbox2).not.toBeChecked();
-    // Screenshot of whole page after checking and unchecking checkboxes
-    await page.screenshot({ path: './tests/WebAppTests/Screenshots/checkboxes-page.png', fullPage:true });
-
-});
-
 test('Basic Authentication', async ({ page }) => {
     
     // create locator for Basic Authentication hyperlink

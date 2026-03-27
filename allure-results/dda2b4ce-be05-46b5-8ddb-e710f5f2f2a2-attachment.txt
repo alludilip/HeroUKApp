@@ -1,3 +1,0 @@
-Global setup: Create a user account in the database.
-Screenshot captured after each test.
-Global teardown: Delete the user account from the database.

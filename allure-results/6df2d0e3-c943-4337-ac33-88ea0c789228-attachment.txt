@@ -1,3 +1,0 @@
-title of the window is async title() {
-    return await this._mainFrame.title();
-  }

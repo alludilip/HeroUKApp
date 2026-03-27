@@ -1,4 +1,0 @@
-[
-  { Skill1: 'TestSkill1', Skill2: 'TestSkill3' },
-  { Skill1: 'TestSkill2', Skill2: 'TestSkill4' }
-]

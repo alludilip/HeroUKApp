@@ -1,6 +1,0 @@
-[
-  { Skill1: 'Selenium', Skill2: 'Playwright' },
-  { Skill1: 'TestNG', Skill2: 'Typescript' },
-  { Skill1: 'Github', Skill2: 'Github' }
-]
-3
