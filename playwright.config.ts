@@ -25,7 +25,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  globalSetup:'tests/PlaywrightConcepts/auth-setup.ts',
+  globalSetup:'src/Fixtures/auth-setup.ts',
   testDir: './tests',
 
   timeout: 60000, // Sets default test timeout to 60 seconds
@@ -44,7 +44,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
+    ['html', {open:'never'}],
     ['allure-playwright'],
     ['json', {outputFile: 'playwright-report/json-test-report.json'}],
     ['junit', {outputFile: 'playwright-report/junit-test-report.xml'}],

@@ -1,15 +1,28 @@
 import { test, expect } from '@playwright/test';
 
+/*
+If we have browser authentication we can do it in 2 ways:
+  1. By giving the credentials directly in the url
+  2. By passing credentials in the context creation itself as parameters
+*/
 
 
-test('Basic Authentication', async ({ page }) => {
+test('Basic Authentication', async ({browser }) => {
+
+    const context1 = await browser.newContext(
+      {httpCredentials:{username:'admin', password:'admin'}}
+   );
+
+   const page =await context1.newPage();
     
     // create locator for Basic Authentication hyperlink
     const basicAuthLink = page.getByRole('link', { name: 'Basic Auth' });
     const successMessage = page.getByRole('heading', { name: 'Congratulations! You must have the proper credentials.'});
     const success = page.getByText('Congratulations! You must');
     // Navigate to the page and wait for it to load
-    await page.goto('https://admin:admin@the-internet.herokuapp.com/');
+    //await page.goto('https://admin:admin@the-internet.herokuapp.com/');
+
+    await page.goto('https://the-internet.herokuapp.com/');
 
     // Click on the "Basic Authentication" link and wait for the page to load
     await basicAuthLink.click();

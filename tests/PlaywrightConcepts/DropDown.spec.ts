@@ -21,7 +21,6 @@ test('Handling dropdown button', async ({ page }) => {
 });
 
 
-
 test('Handle a dynamic dropdown', async ({ page }) => {
     // Navigate to a page with a dynamic dropdown (using a placeholder URL)
     // You should replace this with the actual URL of your target page.

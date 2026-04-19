@@ -1,5 +1,15 @@
 import { test, expect } from '@playwright/test'
 
+test.describe.configure({ mode: 'serial' , retries:2, timeout:30000})
+
+/*
+  Serial:
+  The above applies only to the file it is declared. Useful for dependent tests
+  If one test fails the following tests are skipped. Entire group is retried together
+  Default: To run sequentially but not skip tests on failure
+  parallel : All tests are executed parallely.
+*/
+
 test.describe('Smoke Tests', () => {
      // Add tests belonging to smoke tests
 

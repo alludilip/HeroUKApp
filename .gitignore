@@ -7,3 +7,6 @@ node_modules/
 /playwright/.cache/
 /tests/PlaywrightConcepts/*Auth*.json
 /allure-results/
+
+# Playwright
+/playwright/.auth/

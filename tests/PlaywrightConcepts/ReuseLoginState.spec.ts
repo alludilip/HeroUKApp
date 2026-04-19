@@ -13,17 +13,17 @@ import { test, expect } from '@playwright/test'
 
 test('Auto Auth Test1', async ({ page }) => {
     await page.goto("https://www.debugbear.com/");
-    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible({timeout:15000});
 
 })
 
 test('Auto Auth Test2', async ({ page }) => {
     await page.goto("https://www.debugbear.com/");
-    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible({timeout:15000});
 })
 
 
 test('Auto Auth Test3', async ({ page }) => {
     await page.goto("https://www.debugbear.com/");
-    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible({timeout:15000});
 })

@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+/*
+In Playwright, page.on() attaches an event listener that persists and fires every time an event occurs.
+page.off should be used to stop event monitoring for page.on().
+whereas page.once() attaches an event listener that fires only for the first occurrence of the event, 
+after which the listener is automatically removed. 
+*/
 
     // Handling alerts
     test('Alerts', async({page})=>{

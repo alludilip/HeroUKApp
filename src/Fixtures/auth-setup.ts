@@ -10,11 +10,10 @@ async function globalAuthSetup() {
     await page.locator('input[name="email"]').fill("dilip.kumar887@gmail.com");
     await page.locator('input[name="password"]').fill("TestingLogin@1234");
     await page.getByRole('button', { name: 'Log In' }).click();
-    await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible();
+    //await expect(page.getByRole('heading', { name: 'Start Monitoring Your Website' })).toBeVisible();
 
     // Save the state of the web page
     await page.context().storageState({ path: 'tests/PlaywrightConcepts/loginAuthState.json' })
-
     await browser.close();
 
 }

@@ -9,10 +9,15 @@ test('upload file using setInputFiles', async ({ page }) => {
   // Locate the input element and set the file(s)
   await page.locator('input[type="file"]').setInputFiles(path.join(__dirname, 'sample.pdf'));
 
-  // Can upload multiple files by passing array of paths - setInputFiles(['file1.pdf', 'file2.png'])
+  // upload multiple files by passing array of paths
+  await page.getByLabel('Upload files').setInputFiles(['file1.pdf', 'file2.pdf']);
   
   // Optional: Assert the file name or a success message
-  await expect(page.locator('.upload-status')).toHaveText('File Uploaded!'); 
+  await expect(page.locator('.upload-status')).toHaveText('File Uploaded!');
+
+  // Passing empty array to setInputFiles() makes unselect the files if you are already selected.
+  await page.getByLabel('Upload file').setInputFiles([]);
+  
 });
 
 
